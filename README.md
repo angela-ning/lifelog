@@ -1,9 +1,10 @@
 # 生活记录 · LifeLog
 
-> ### 🌐 在线体验 → **<https://lifelog-16154.app.workbuddy.host/>**
+> ### 🌐 在线体验 → **<https://angela-ning.github.io/lifelog/>**
 > ### 📦 源码仓库 → **<https://github.com/angela-ning/lifelog>**
 >
 > 打开就能用，不需要注册邀请。**你记录的内容只保存在你自己的浏览器里** —— 不上传任何服务器，作者看不到任何人的数据。详见 [数据存储与隐私](#6-数据存储与隐私)。
+> （GitHub Pages 开通后才会生效；在那之前可临时访问 <https://lifelog-16154.app.workbuddy.host/>）
 
 本项目大部分内容是经过vibecoding完成的，起初做这个是想用于个人的记录，欢迎大家体验~
 
@@ -60,7 +61,7 @@
 
 ### 只想试用，不想装环境？
 
-直接打开 **[lifelog-16154.app.workbuddy.host](https://lifelog-16154.app.workbuddy.host/)** 就行，功能与本机运行完全一致。下面这一段是给「想自己跑一份」或「想改代码」的人看的。
+直接打开 **[angela-ning.github.io/lifelog](https://angela-ning.github.io/lifelog/)** 就行，功能与本机运行完全一致。下面这一段是给「想自己跑一份」或「想改代码」的人看的。
 
 ### 环境要求
 
@@ -103,7 +104,9 @@ npm run preview   # 本地预览构建产物
 2. **Source** 选 **GitHub Actions**（不要选 Deploy from a branch，让云端重新构建更干净）；
 3. 之后每次 push 到 `main`，Actions 会自动 `npm ci` + `npm run build` 并发布。
 
-网址形如 `https://<你的用户名>.github.io/lifelog/`。因为 `vite.config.ts` 用的是 `base: './'`、路由是 `HashRouter`，放在这种子路径下也不会白屏。（`.gitignore` 里忽略了 `dist/`，构建产物交给 Actions 生成。）
+网址是 `https://angela-ning.github.io/lifelog/`。因为 `vite.config.ts` 用的是 `base: './'`、路由是 `HashRouter`，放在这种子路径下也不会白屏。（`.gitignore` 里忽略了 `dist/`，构建产物交给 Actions 生成。）
+
+发布成功后，把仓库 About 里的 **Website** 字段填成同一个地址，别人进仓库第一眼就能点进去。
 
 ### 构建产物直接丢到任意静态托管
 
@@ -347,7 +350,7 @@ PASS 每 N 天：周期起点
 
 | | 说明 |
 | --- | --- |
-| 每人一份独立数据 | 任何人打开[在线链接](https://lifelog-16154.app.workbuddy.host/)都是一个**全新的空站点**，需要自己点「注册」建账号；你记的任务、打卡、日志不会出现在别人的页面上，别人的也不会出现在你这里 |
+| 每人一份独立数据 | 任何人打开[在线链接](https://angela-ning.github.io/lifelog/)都是一个**全新的空站点**，需要自己点「注册」建账号；你记的任务、打卡、日志不会出现在别人的页面上，别人的也不会出现在你这里 |
 | 作者看不到任何内容 | 没有中央数据库，服务端不接触任何记录、任何密码；站点是公开的，但数据是私有的 |
 | 数据跟着「浏览器 + 域名」走 | 线上版与本地版账号**不互通**；换浏览器、换设备、清缓存都会看不到原来的数据 |
 | 想要跨设备 | 目前用「设置 → 导出 / 导入 JSON 备份」；换成云端数据库的改造点见 [从本机模式切换到云端](#从本机模式切换到云端) |
