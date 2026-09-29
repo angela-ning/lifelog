@@ -1,0 +1,55 @@
+# 推送到 main 后自动构建并发布到 GitHub Pages。
+# 首次使用：仓库 → Settings → Pages → Source 选择 "GitHub Actions"。
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 这里用 npm install 而不是 npm ci：package-lock.json 是在 Windows 上生成的，
+      # 只记录了 win32 平台的原生二进制（esbuild / rollup 的平台包），npm ci 严格按锁
+      # 文件安装、在 Linux 上不会补装对应版本，会导致 vite build 报找不到 rollup 原生模块。
+      - name: 安装依赖
+        run: npm install --no-audit --no-fund
+
+      - name: 核心逻辑自检
+        run: npm run selftest
+
+      - name: 构建
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

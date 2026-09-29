@@ -1,0 +1,19 @@
+# 依赖
+node_modules/
+
+# 构建产物（GitHub Pages 由 Actions 在云端重新构建）
+dist/
+
+# 自检脚本的中间产物
+scripts/.selftest.mjs
+
+# 本地与编辑器文件
+*.local
+.DS_Store
+.vscode/
+.idea/
+
+# 日志
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
