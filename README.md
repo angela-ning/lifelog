@@ -3,7 +3,7 @@
 > 一个纯前端的个人生活记录站：任务、习惯打卡、日记、复盘与数据洞察，放在同一条时间轴上。
 >
 > **在线体验**：<https://lifelog-16154.app.workbuddy.host/#/login>  
-> (<https://angela-ning.github.io/lifelog/>待进一步更新）
+> (<https://angela-ning.github.io/lifelog/>待进一步更新）  
 > **源码仓库**：<https://github.com/angela-ning/lifelog>
 >
 > 打开即用，无需注册邀请。所有记录**只保存在你自己的浏览器里**，不上传任何服务器。详见 [数据与隐私](#6-数据与隐私)。
